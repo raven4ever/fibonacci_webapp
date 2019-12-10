@@ -10,12 +10,12 @@ script:
   - docker run -e CI=true wrtv23/react-test npm run test -- --coverage
 
 after_success:
-  - docker build -t wrtv23/fibonacci_webapp/client ./client
-  - docker build -t wrtv23/fibonacci_webapp/nginx ./nginx
-  - docker build -t wrtv23/fibonacci_webapp/server ./server
-  - docker build -t wrtv23/fibonacci_webapp/worker ./worker
+  - docker build -t wrtv23/fibonacci-client ./client
+  - docker build -t wrtv23/fibonacci-nginx ./nginx
+  - docker build -t wrtv23/fibonacci-server ./server
+  - docker build -t wrtv23/fibonacci-worker ./worker
   - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
-  - docker push wrtv23/fibonacci_webapp/client
-  - docker push wrtv23/fibonacci_webapp/nginx
-  - docker push wrtv23/fibonacci_webapp/server
-  - docker push wrtv23/fibonacci_webapp/worker
+  - docker push wrtv23/fibonacci-client
+  - docker push wrtv23/fibonacci-nginx
+  - docker push wrtv23/fibonacci-server
+  - docker push wrtv23/fibonacci-worker
