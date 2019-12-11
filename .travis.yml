@@ -19,3 +19,16 @@ after_success:
   - docker push wrtv23/fibonacci-nginx
   - docker push wrtv23/fibonacci-server
   - docker push wrtv23/fibonacci-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "fibonacci_app"
+  env: "FibonacciApp-env"
+  bucket_name: "elasticbeanstalk-us-east-1-358967056985"
+  bucket_path: "fibonacci_app"
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+  on:
+    branch: master
